@@ -1,0 +1,17 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: jenkins-eks
+  region: us-west-2
+
+nodeGroups:
+  - name: ng-ec2
+    instanceType: m5.large
+    desiredCapacity: 2
+
+fargateProfiles:
+  - name: fp-jenkins
+    selectors:
+      - namespace: jenkins
